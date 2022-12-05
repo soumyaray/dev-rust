@@ -1,0 +1,18 @@
+---
+oh_my_zsh:
+  zshrc:
+    zsh_theme: robbyrussell
+    # theme_install_command: 'git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k'
+    # theme_other_commands:
+    #   - POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+    #   - POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time)
+    plugins:
+      - plugin: git
+      - plugin: zsh-completions
+        plugin_install_command: 'git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions'
+      - plugin: zsh-autosuggestions
+        plugin_install_command: 'git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions'
+      - plugin: zsh-syntax-highlighting
+        plugin_install_command: 'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting'
+      - plugin: z
+        plugin_install_command: 'git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z'
