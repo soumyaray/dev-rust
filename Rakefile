@@ -4,7 +4,8 @@ require 'yaml'
 
 task :config do
   container = YAML.safe_load File.read('container.yml')
-  @owner = container['owner']
+  @owner = container['dockerhub_username']
+  @github_user = container['github_username']
   @name = container['name']
   @version = container['version']
   @username = ENV['USER']
@@ -12,7 +13,8 @@ end
 
 desc 'Build the image from Dockerifle'
 task build: :config do
-  sh "docker build --rm --force-rm -t #{@owner}/#{@name}:#{@version} --build-arg USERNAME=#{@username} ."
+  sh "docker build --rm --force-rm -t #{@owner}/#{@name}:#{@version} " +
+     "--build-arg USERNAME=#{@username} --build-arg GITHUB_USERNAME=#{@github_user} ."
 end
 
 desc 'Run the built container as image'

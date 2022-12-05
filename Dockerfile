@@ -24,6 +24,7 @@ RUN gem install --no-document bundler \
 
 # Add User
 ARG USERNAME
+ARG GITHUB_USERNAME
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 
@@ -47,3 +48,13 @@ RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/inst
     && touch ~/.zshrc \
     && /tmp/zsh_initialization.sh \
     && sudo rm /tmp/zsh_initialization.sh /tmp/zsh_config.yml
+
+# Copy in dotfiles from Github
+# see: https://drewdevault.com/2019/12/30/dotfiles.html
+RUN \
+  cd ~ \
+  && git init \
+  && git remote add origin https://github.com/${GITHUB_USERNAME}/dotfiles.git \
+  && git fetch \
+  && git checkout -f main \
+  && rm -rf .git

@@ -1,4 +1,5 @@
 ---
-owner: soumyaray
-name: rust-dev
+github_username: soumyaray
+dockerhub_username: soumyaray
+name: dev-rust
 version: 0.1.0
